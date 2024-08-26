@@ -60,3 +60,10 @@ graph = graph_builder.compile()
 #     for event in graph.stream({"messages": ("user", user_input)}):
 #         for value in event.values():
 #             print("Assistant:", value["messages"][-1].content)
+
+
+from langchain_community.tools.tavily_search import TavilySearchResults
+
+tool = TavilySearchResults(max_results=2)
+tools = [tool]
+tool.invoke("What's a 'node' in LangGraph?")
